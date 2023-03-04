@@ -2,12 +2,8 @@ name: Build and Push
 
 on:
   push:
-    branches:
-      - master
-    tags:
-      - "*"
-  pull_request:
-
+    branches: ["main"]
+    tags: ["*"]
 env:
   IMAGE_NAME: sleep
 
