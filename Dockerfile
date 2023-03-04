@@ -1,6 +1,6 @@
 FROM golang:1.18 as builder
 WORKDIR /workspace
-COPY main.go go.mod .
+COPY main.go go.mod /workspace/
 RUN CGO_ENABLED=0 GOOS=linux GOARCH=amd64 go build -a -o sleep main.go
 
 # https://github.com/GoogleContainerTools/distroless
