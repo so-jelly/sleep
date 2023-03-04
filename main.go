@@ -1,22 +1,18 @@
 package main
 
 import (
+	"flag"
 	"fmt"
-	"os"
-	"strconv"
 	"time"
 )
 
 func main() {
-	sleepSeconds := int64(86400)
-	if len(os.Args) > 1 {
-		arg, err := strconv.ParseInt(os.Args[1], 10, 0)
-		if err != nil {
-			fmt.Println("Sleep time must be an integer")
-			os.Exit(1)
-		}
-		sleepSeconds = arg
+	help := flag.Bool("help", false, "show usage")
+	sleepSeconds := flag.Int("sec", 300, "seconds to wait for")
+	flag.Parse()
+	if *help {
+		flag.Usage()
 	}
-	time.Sleep(time.Second * time.Duration(sleepSeconds))
+	time.Sleep(time.Second * time.Duration(*sleepSeconds))
 	fmt.Println("well rested")
 }
